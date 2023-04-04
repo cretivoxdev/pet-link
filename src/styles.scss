@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+p,h1,h2,h3,h4,h5{
+    margin: 0;
+}
+
+body{
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.main-color{
+    color: rgb(7, 7, 7) !important;
+}
+
+.pet-text{
+    color: #040637 !important;
+    font-weight: 600;
+}
+
+.btn-pet{
+    background-image: linear-gradient(to right top, #389cf4, #42a0f2, #4ba3f1, #54a7ef, #5daaed);
+    color: white;
+}
+
+.pet-primary{
+    color: #389cf4 !important;
+}
+
+.pet-bg-primary{
+    background: #389cf4 !important;
+}
+
+// #5daaed

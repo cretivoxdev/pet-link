@@ -1,0 +1,22 @@
+.container-fluid{
+    background: #f8f9fa;
+    height: 100dvh;
+    h1{
+        font-weight: 600;
+    }
+    p{
+        font-size: 13pt;
+        width: 70%;
+        margin: auto;
+    }
+    input, .btn{
+        border-radius: 10px;
+    }
+    .btn{
+        background-image: linear-gradient(to right top, #389cf4, #42a0f2, #4ba3f1, #54a7ef, #5daaed);
+        color: white;
+    }
+    img{
+        width: 100px;
+    }
+}

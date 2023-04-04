@@ -1,0 +1,69 @@
+<section class="main px-2">
+    <div class="container-fluid pt-4 sec1 mb-3">
+        <div class="d-flex align-items-center">
+            <div class="flex-column">
+                <small>Location <i class="fas fa-chevron-down pet-primary"></i></small>
+                <h5 class="pet-text">Jakarta, Indonesia</h5>
+            </div>
+            <div class="ms-auto">
+                <div class="btn btn-notif">
+                    <i class="fas fa-bell"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid sec2 mb-4">
+        <img src="https://via.placeholder.com/200" alt="">
+    </div>
+
+    <div class="container-fluid sec3 mb-4">
+        <div class="wrap mb-2">
+            <p class="pet-text title">Categories</p>
+        </div>
+        <div class="wrap-card d-flex justify-content-between">
+            <div class="card {{item.name}}" *ngFor="let item of categories">
+                <div class="card-body">
+                    <p class="pet-text">{{item.name}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid sec4 pb-5">
+        <div class="wrap mb-2">
+            <p class="pet-text title">Pet World</p>
+        </div>
+        <!-- Slider main container -->
+        <div class="swiper-container pb-2">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <img src="https://via.placeholder.com/100" alt="">
+                            <div class="wrap d-flex align-items-center p-3">
+                                <div class="flex-column">
+                                    <p class="pet-text">Kudo</p>
+                                    <small class="text-muted">Persia</small><br>
+                                </div>
+                                <div class="gender ms-auto">
+                                    <i class="fas fa-mars"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+</section>
+
+
+<app-navbar></app-navbar>
