@@ -1,20 +1,31 @@
-<section class="main px-2">
-    <div class="container-fluid pt-4 sec1 mb-3">
+<section class="main px-0">
+    <div class="container-fluid py-3 sec1 mb-3">
         <div class="d-flex align-items-center">
             <div class="flex-column">
                 <small>Location <i class="fas fa-chevron-down pet-primary"></i></small>
-                <h5 class="pet-text">Jakarta, Indonesia</h5>
+                <h5>Jakarta, Indonesia</h5>
             </div>
             <div class="ms-auto">
-                <div class="btn btn-notif">
-                    <i class="fas fa-bell"></i>
-                </div>
+                <a class="btn p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                      </svg>
+                </a>
+                <a class="btn p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                      </svg>
+                </a>
             </div>
         </div>
     </div>
 
     <div class="container-fluid sec2 mb-4">
-        <img src="https://via.placeholder.com/200" alt="">
+        <swiper [config]="ads" #swiper class="pb-2">
+            <ng-template swiperSlide class="swiper-slide" *ngFor="let item of adv">
+                <img src="{{item.image}}" class="pet-shadow" alt="">
+            </ng-template>
+        </swiper>
     </div>
 
     <div class="container-fluid sec3 mb-4">
@@ -22,48 +33,39 @@
             <p class="pet-text title">Categories</p>
         </div>
         <div class="wrap-card d-flex justify-content-between">
-            <div class="card {{item.name}}" *ngFor="let item of categories">
-                <div class="card-body">
-                    <p class="pet-text">{{item.name}}</p>
+            <div class="card pet-border" *ngFor="let item of categories">
+                <div class="card-body d-flex align-items-center p-3">
+                    <img src="https://via.placeholder.com/50" class="pet-border me-2" alt="">
+                    <div class="flex-column">
+                        <p class="pet-text">{{item.name}}</p>
+                    <small class="text-muted">Total: {{item.total}}</small>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid sec4 pb-5">
-        <div class="wrap mb-2">
-            <p class="pet-text title">Pet World</p>
+    <div class="container-fluid sec4 mb-5">
+        <div class="wrap mb-2 d-flex align-items-center">
+            <p class="pet-text title">Newest pet</p>
+            <a class="btn ms-auto">View All</a>
         </div>
-        <!-- Slider main container -->
-        <div class="swiper-container pb-2">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-                <!-- Slides -->
-                <div class="swiper-slide">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <img src="https://via.placeholder.com/100" alt="">
-                            <div class="wrap d-flex align-items-center p-3">
-                                <div class="flex-column">
-                                    <p class="pet-text">Kudo</p>
-                                    <small class="text-muted">Persia</small><br>
-                                </div>
-                                <div class="gender ms-auto">
-                                    <i class="fas fa-mars"></i>
-                                </div>
-                            </div>
+            <swiper [config]="config" #swiper class="pb-5">
+                <ng-template swiperSlide class="swiper-slide" *ngFor="let item of list">
+                    <div class="card pet-shadow">
+                        <div class="card-body p-2">
+                            <img src="{{item.picture}}" alt="">
+                           <div class="wrap py-3">
+                               <h5 class="mb-2"><span>Rabi the Cat</span></h5>
+                               <p class="ms-auto"><span class="badge rounded-pill">Himalaya</span></p>
+                           </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
-            </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
-        </div>
+                </ng-template>
+            </swiper>
     </div>
 
 </section>
 
 
-<app-navbar></app-navbar>
+<!-- <app-navbar></app-navbar> -->

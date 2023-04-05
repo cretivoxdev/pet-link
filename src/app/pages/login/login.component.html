@@ -1,24 +1,34 @@
-<div class="container-fluid text-center">
-    <div class="flex-column w-100 py-5">
-        <img src="/assets/logo.png" class="mb-3" alt="">
-        <h1 class="mb-2 main-color">Hello Again!</h1>
-        <p class="mb-5">Welcome back you've been missed!</p>
-        <form>
-            <div class="mb-3">
-                <input type="text" placeholder="Enter username" class="py-3 border-0 form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+<div class="container-fluid">
+    <div class="flex-column w-100 pt-4">
+        <div class="text-center mb-4">
+            <h1 class="mb-2 main-color">Hello Again!</h1>
+            <p>Welcome back you've been missed!</p>
+        </div>
+        <div class="card p-2">
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="text" placeholder="Enter username" class="py-3 border-0 form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Password</label>
+                        <input type="password" placeholder="Password" class="py-3 border-0 form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-4 float-end">
+                        <small class="text-muted">Forgot Password?</small>
+                    </div>
+                    <button class="btn btn-pet w-100 py-3">Sign In</button>
+                </form>
+                <div class="text-center mt-3">
+                    <small>by Continuing, you accept our <span>Terms and Conditions, Privacy Policy</span></small>
+                </div>
             </div>
-            <div class="mb-3">
-                <input type="password" placeholder="Password" class="py-3 border-0 form-control" id="exampleInputPassword1">
-            </div>
-            <div class="mb-4 float-end">
-                <small class="text-muted">Forgot Password?</small>
-            </div>
-            <button type="submit" class="btn w-100 py-3">Sign In</button>
-        </form>
+        </div>
     </div>
 </div>
 <footer class="fixed-bottom d-flex flex-wrap justify-content-center align-items-center border-top">
     <div class="wrap py-3">
-        <small>Not a member? <span class="text-primary">Register now</span></small>
+        <small>Not a member? <span>Register now</span></small>
     </div>
 </footer>

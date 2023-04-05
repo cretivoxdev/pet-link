@@ -17,12 +17,32 @@ body{
 }
 
 .btn-pet{
-    background-image: linear-gradient(to right top, #389cf4, #42a0f2, #4ba3f1, #54a7ef, #5daaed);
-    color: white;
+    box-shadow: 4px 4px 0 #000 !important;
+    background: #22c993 !important;
+    border: 2px solid black !important;
+    color: black !important;
+    font-weight: 600;
+    transition: ease 0.4s;
+    &:hover{
+        box-shadow: none !important;
+    }
+}
+
+.pet-shadow{
+    box-shadow: 4px 4px 0 #000 !important;
+    border: 2px solid black !important;
+}
+
+.pet-border{
+    border: 2px solid black !important;
+}
+
+.yellow{
+    color: #fdcd4e !important;
 }
 
 .pet-primary{
-    color: #389cf4 !important;
+    color: #22c993 !important;
 }
 
 .pet-bg-primary{
@@ -30,3 +50,7 @@ body{
 }
 
 // #5daaed
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';

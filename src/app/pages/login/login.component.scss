@@ -1,5 +1,5 @@
 .container-fluid{
-    background: #f8f9fa;
+    background: #ffffff;
     height: 100dvh;
     h1{
         font-weight: 600;
@@ -9,14 +9,27 @@
         width: 70%;
         margin: auto;
     }
-    input, .btn{
+    label{
+        font-weight: 600;
+    }
+    input{
+        background: rgb(241, 241, 241);
+    }
+    input{
         border-radius: 10px;
     }
     .btn{
-        background-image: linear-gradient(to right top, #389cf4, #42a0f2, #4ba3f1, #54a7ef, #5daaed);
-        color: white;
+        border-radius: 20px;
     }
-    img{
-        width: 100px;
-    }
+    // .btn{
+    //     box-shadow: 4px 4px 0 #000;
+    //     background: #22c993;
+    //     border: 2px solid black;
+    //     color: black;
+    // }
+}
+
+.card{
+    border: 2px solid black;
+    border-radius: 30px;
 }
