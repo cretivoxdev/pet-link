@@ -1,0 +1,85 @@
+<section class="main px-0">
+    <div class="container-fluid py-2 sec1 mb-3">
+        <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <a class="btn" routerLink="/home">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <p>Shop</p>
+            </div>
+            <div class="ms-auto cart">
+                <a class="btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mb-4 sec2">
+        <div class="card">
+            <div class="card-body">
+                <img src="https://images.tokopedia.net/img/cache/500-square/hDjmkQ/2022/1/6/8e99cb88-f934-4067-8845-5d09f3cea608.jpg"
+                    alt="">
+                <div class="d-flex mb-0">
+                    <div class="flex-column">
+                        <small class="badge bg-danger mb-2">Free Shipping</small>
+                        <h5>
+                            Pet Link with NFC
+                        </h5>
+                        <h5 class="mb-2 price">Rp100.000</h5>
+                    </div>
+                    <div class="ms-auto d-flex align-items-center">
+                        <span class="me-3">
+                            <button class="btn btn-secondary btn-sm" (click)="min()">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </span>
+                        <h5>{{count}}</h5>
+                        <span class="ms-3">
+                            <button class="btn btn-secondary btn-sm" (click)="plus()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="picker my-3">
+                    <div class="d-flex">
+                        <p>Neck: &nbsp;</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault1">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault2" checked>
+                        </div>
+                        <p>Steel: &nbsp;</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault3" value="blue">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                id="flexRadioDefault4" value="red">
+                        </div>
+                    </div>
+                </div>
+                <div class="desc mb-3 text-muted">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente magni unde nulla quam? Illo doloremque ab blanditiis aliquid, placeat quos!</p>
+                </div>
+                <button class="btn btn-pet w-100 py-3">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid mb-4 sec3">
+        <div class="wrap mb-4 m-auto">
+            <p class="pet-text title text-center">or</p>
+        </div>
+        <div class="card mb-2" *ngFor="let item of shop">
+            <div class="card-body">
+                <img src="{{item.icon}}" alt="">
+            </div>
+        </div>
+    </div>
+</section>

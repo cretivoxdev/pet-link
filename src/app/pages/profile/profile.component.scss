@@ -73,3 +73,21 @@
         border: 1.6px solid black;
     }
 }
+
+.sec4{
+    .card{
+        border-radius: 20px;
+        border: 0;
+        // border: 1.5px solid black;
+    }
+    .list-group{
+        border: none !important;
+    }
+    .list-group-item{
+        margin-bottom: 10px;
+        border: none;
+        border: 1px solid black;
+        background: none;
+        border-radius: 20px;
+    }
+}

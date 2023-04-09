@@ -9,6 +9,10 @@ import { SwiperModule } from 'swiper/angular';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { PetWorldComponent } from './pages/pet-world/pet-world.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { NotificationComponent } from './pages/notification/notification.component';
+import { ShopComponent } from './pages/shop/shop.component';
+import { NotificationDetailComponent } from './pages/notification-detail/notification-detail.component';
+import { ShopCheckoutComponent } from './pages/shop-checkout/shop-checkout.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HomeComponent,
     NavbarComponent,
     PetWorldComponent,
-    ProfileComponent
+    ProfileComponent,
+    NotificationComponent,
+    ShopComponent,
+    NotificationDetailComponent,
+    ShopCheckoutComponent
   ],
   imports: [
     BrowserModule,
