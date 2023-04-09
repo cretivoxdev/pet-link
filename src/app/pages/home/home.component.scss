@@ -35,6 +35,7 @@
         height: 40px;
         border: 1.5px solid black !important;
         border-radius: 100%;
+        object-fit: cover;
     }
 }
 
@@ -53,6 +54,7 @@
     }
     h5{
         font-weight: 600;
+        font-size: 14pt;
     }
     .badge{
         background: white;
@@ -70,3 +72,6 @@
     }
 }
 
+svg{
+    color: white;
+}

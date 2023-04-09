@@ -43,7 +43,7 @@
         font-weight: 600;
     }
     .content{
-        width: calc(100%/3);
+        width: calc(100%/2);
         border: 1.5px solid black;
         border-radius: 15px;
         padding: 10px;
@@ -88,5 +88,13 @@
 .sec4{
     .btn{
         border-radius: 20px;
+    }
+}
+
+.bar{
+    background: #22c993;
+    color: white;
+    a{
+        color: white;
     }
 }

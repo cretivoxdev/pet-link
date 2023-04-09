@@ -8,6 +8,7 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { SwiperModule } from 'swiper/angular';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { PetWorldComponent } from './pages/pet-world/pet-world.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,13 @@ import { PetWorldComponent } from './pages/pet-world/pet-world.component';
     LoginComponent,
     HomeComponent,
     NavbarComponent,
-    PetWorldComponent
+    PetWorldComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SwiperModule
+    SwiperModule,
   ],
   providers: [{
     provide: LocationStrategy, useClass: HashLocationStrategy

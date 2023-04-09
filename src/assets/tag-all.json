@@ -1,0 +1,28 @@
+
+[
+    {
+        "owner": {
+            "email": "admin",
+            "id": 1,
+            "name": "agis",
+            "instagram": "__localhost05",
+            "profile": "image"
+        },
+        "pets": [
+            {
+                "data": {
+                    "pet_name": "string",
+                    "pet_age": "string",
+                    "pet_gender": "string",
+                    "pet_vaccine": "boolean",
+                    "pet_ras": "string",
+                    "pet_story": "long string",
+                    "pet_image": "image"
+                },
+                "id": 1
+            }
+        ]
+    }
+]
+
+

@@ -4,12 +4,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PetWorldComponent } from './pages/pet-world/pet-world.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'pet-world/:id', component: PetWorldComponent}
+  { path: 'pet-world/:id', component: PetWorldComponent},
+  { path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

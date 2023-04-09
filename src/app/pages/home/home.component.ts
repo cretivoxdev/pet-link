@@ -32,13 +32,13 @@ export class HomeComponent implements OnInit{
   categories = [
     {
       name: "Cats",
-      icon: "",
+      icon: "/assets/icon/cat.jpg",
       route: "",
       total: 32,
     },
     {
       name: "Dogs",
-      icon: "",
+      icon: "/assets/icon/dog.jpg",
       route: "",
       total: 12,
     },
