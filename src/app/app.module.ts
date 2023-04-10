@@ -13,7 +13,8 @@ import { NotificationComponent } from './pages/notification/notification.compone
 import { ShopComponent } from './pages/shop/shop.component';
 import { NotificationDetailComponent } from './pages/notification-detail/notification-detail.component';
 import { ShopCheckoutComponent } from './pages/shop-checkout/shop-checkout.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,8 @@ import { ShopCheckoutComponent } from './pages/shop-checkout/shop-checkout.compo
     BrowserModule,
     AppRoutingModule,
     SwiperModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [{
     provide: LocationStrategy, useClass: HashLocationStrategy

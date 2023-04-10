@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import SwiperCore, { EffectCards, EffectCoverflow, EffectFade, Navigation, Pagination, SwiperOptions, Virtual, Swiper } from 'swiper';
 @Component({
   selector: 'app-home',
@@ -7,7 +8,11 @@ import SwiperCore, { EffectCards, EffectCoverflow, EffectFade, Navigation, Pagin
 })
 export class HomeComponent implements OnInit{
 
-  constructor(){}
+  allpet : any
+  cat: any
+  dog: any
+  categories : any
+  constructor(private service: AuthService){}
 
   config: SwiperOptions = {
     grabCursor: true,
@@ -26,23 +31,52 @@ export class HomeComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    this.service.allpet()
+    .subscribe(response => {
+      console.log(response);
+      this.allpet = response
 
+      this.cat = this.allpet.reduce((count: number, item: { data: { pet_type: string; }; }) => {
+        return item.data.pet_type === 'cat' ? count + 1 : count
+      }, 0) 
+
+      this.dog = this.allpet.reduce((count: number, item: { data: { pet_type: string; }; }) => {
+        return item.data.pet_type === 'dog' ? count + 1 : count
+      }, 0) 
+      console.log(this.cat);  
+      this.categories = [
+        {
+          name: "Cats",
+          icon: "/assets/icon/cat.jpg",
+          route: "",
+          total: this.cat,
+        },
+        {
+          name: "Dogs",
+          icon: "/assets/icon/dog.jpg",
+          route: "",
+          total: this.dog,
+        },
+      ]    
+    })
   }
 
-  categories = [
-    {
-      name: "Cats",
-      icon: "/assets/icon/cat.jpg",
-      route: "",
-      total: 32,
-    },
-    {
-      name: "Dogs",
-      icon: "/assets/icon/dog.jpg",
-      route: "",
-      total: 12,
-    },
-  ]
+  // categories = [
+  //   {
+  //     name: "Cats",
+  //     icon: "/assets/icon/cat.jpg",
+  //     route: "",
+  //     total: 12,
+  //   },
+  //   {
+  //     name: "Dogs",
+  //     icon: "/assets/icon/dog.jpg",
+  //     route: "",
+  //     total: 12,
+  //   },
+  // ]
+
+
 
   list = [
     {

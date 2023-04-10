@@ -9,13 +9,14 @@ import { NotificationComponent } from './pages/notification/notification.compone
 import { ShopComponent } from './pages/shop/shop.component';
 import { ShopCheckoutComponent } from './pages/shop-checkout/shop-checkout.component';
 import { NotificationDetailComponent } from './pages/notification-detail/notification-detail.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo:'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent , canActivate: [AuthGuard]},
   { path: 'pet-world/:id', component: PetWorldComponent},
-  { path: 'profile', component: ProfileComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'notification', component: NotificationComponent},
   {path: 'notification-detail/:id', component: NotificationDetailComponent},
   {path: 'shop', component: ShopComponent},

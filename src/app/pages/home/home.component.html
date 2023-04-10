@@ -56,13 +56,13 @@
             <a class="btn ms-auto">View All</a>
         </div>
             <swiper [config]="config" #swiper class="pb-5">
-                <ng-template swiperSlide class="swiper-slide" *ngFor="let item of list">
+                <ng-template swiperSlide class="swiper-slide" *ngFor="let item of allpet">
                     <div class="card pet-shadow">
                         <div class="card-body p-2">
-                            <img src="{{item.picture}}" alt="">
+                            <img src="http://{{item.data.pet_image}}" alt="">
                            <div class="wrap py-3">
-                               <h5 class="mb-2"><span>Rabi the Cat</span></h5>
-                               <p class="ms-auto"><span class="badge rounded-pill">Himalaya</span></p>
+                               <h5 class="mb-2"><span>{{item.data.pet_name}}</span></h5>
+                               <p class="ms-auto"><span class="badge rounded-pill">{{ item.data.pet_ras | slice:0:10 }}{{ item.data.pet_ras.length > 10 ? '...' : '' }}</span></p>
                            </div>
                         </div>
                     </div>

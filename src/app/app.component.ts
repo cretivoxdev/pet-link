@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Petlink';
+
+  isAuthenticated() {
+    const token = localStorage.getItem('access_token'); // or get the token from a cookie
+    return token !== null;
+  }
 }

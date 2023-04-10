@@ -35,7 +35,7 @@
                                 <i class="fas fa-minus"></i>
                             </button>
                         </span>
-                        <h5>{{count}}</h5>
+                        <h5 #myInput>{{count}}</h5>
                         <span class="ms-3">
                             <button class="btn btn-secondary btn-sm" (click)="plus()">
                                 <i class="fas fa-plus"></i>
@@ -68,7 +68,7 @@
                 <div class="desc mb-3 text-muted">
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente magni unde nulla quam? Illo doloremque ab blanditiis aliquid, placeat quos!</p>
                 </div>
-                <button class="btn btn-pet w-100 py-3">Add to cart</button>
+                <button class="btn btn-pet w-100 py-3" (click)="cart()">Add to cart</button>
             </div>
         </div>
     </div>
