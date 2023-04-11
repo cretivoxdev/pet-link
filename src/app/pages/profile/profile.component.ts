@@ -85,39 +85,36 @@ export class ProfileComponent implements OnInit{
   }
 
   editProfile(id:string, name: string, email: string, ig: string , location: string, profile: string){
-    if(email === null && ig === null && location === null && profile === null){
-      email = "example@gmail.com";
-      ig = "@";
-      location = "nocity";
-      profile = "https://via.placeholder.com/100"
-    }
-    this.formProfile.patchValue({
-      name: name,
-      email: email,
-      ig: ig,
-      location: location,
-    })
+    // this.formProfile.patchValue({
+    //   name: name,
+    //   email: email,
+    //   ig: ig,
+    //   location: location,
+    // })
   }
 
   submitProfile(){
-    const formData = new FormData()
-    formData.append("username", this.formProfile.get("name")!.value)
-    formData.append("email", this.formProfile.get("email")!.value)
-    formData.append("ig", this.formProfile.get("ig")!.value)
-    formData.append("location", this.formProfile.get("location")!.value)
-    formData.append("image", this.changePicture)
+    // const formData = new FormData()
+    // formData.append("username", this.formProfile.get("name")!.value)
+    // formData.append("email", this.formProfile.get("email")!.value)
+    // formData.append("ig", this.formProfile.get("ig")!.value)
+    // formData.append("location", this.formProfile.get("location")!.value)
+    // if(this.changePicture === undefined){
+    //   this.convertImage("/assets/default.png")
+    //   .subscribe(response => {
+    //     formData.append("image", response)
+    //   })
+    // } else{
+    //   formData.append("image", this.changePicture)
+    // }
     // this.service.editProfile(this.userId, formData)
     // .subscribe(response => {
     //   console.log(response);
     //   location.reload()
     // }, (error) => {
     //   console.log("Form Profile Error");
-    if(this.changePicture === undefined){
-      this.convertImage("/assets/default.png")
-      .subscribe(response => {
-        console.log(response);
-      })
-    }
+    // })
+
   }
 
   // End Edit Profile
