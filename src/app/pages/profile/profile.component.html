@@ -1,4 +1,13 @@
 <section class="main px-0 pb-3">
+
+    <div class="wrap-login" *ngIf="session">
+        <div class="card relogin">
+            <div class="card-body text-center">
+                <p>Session ended<br>Please log in again.</p>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid py-2 sec1 mb-3">
         <div class="d-flex align-items-center">
             <div class="d-flex align-items-center">
@@ -7,23 +16,6 @@
                 </a>
                 <p>Profile</p>
             </div>
-            <!-- <div class="ms-auto">
-                <a class="btn p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                      </svg>
-                </a>
-                <a class="btn p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
-                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
-                      </svg>
-                </a>
-                <a class="btn p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-                      </svg>
-                </a>
-            </div> -->
         </div>
     </div>
     <div class="container-fluid sec2 mb-4">
@@ -39,7 +31,9 @@
                     <h5>{{owner.name}}</h5>
                     <p class="text-muted"><small>{{owner.email}}</small></p>
                 </div>
-                <button class="btn btn-pet" (click)="editProfile(owner.id)">Edit Profile</button>
+                <button class="btn btn-pet"
+                    (click)="editProfile(owner.id, owner.name, owner.email, owner.instagram, owner.location, owner.profile)"
+                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit Profile</button>
             </div>
         </div>
     </div>
@@ -61,31 +55,16 @@
                         <div class="main p-1">
                             <h5 class="mt-2"><a class="stretched-link" type="button" data-bs-toggle="modal"
                                     data-bs-target="#editPet">{{item.data.pet_name.toUpperCase()}}</a></h5>
-                                <small class="text-muted">{{item.data.pet_age}}</small><br>
+                            <small class="text-muted">{{item.data.pet_age}}</small><br>
                         </div>
                         <div class="p-1">
                             <p class="text-muted"><i class="fas fa-syringe"></i> : -</p>
-                            <p class="text-muted"><i class="fas fa-paw"></i> : {{ item.data.pet_ras | slice:0:10 }}{{ item.data.pet_ras.length > 10 ? '...' : '' }}</p>
+                            <p class="text-muted"><i class="fas fa-paw"></i> : {{ item.data.pet_ras | slice:0:10 }}{{
+                                item.data.pet_ras.length > 10 ? '...' : '' }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <div class="col">
-                <div class="card">
-                    <div class="card-body p-2">
-                        <img src="https://via.placeholder.com/100" alt="">
-                        <div class="main p-1">
-                            <h5 class="mt-2"><a class="stretched-link" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#editPet">Rabi The Cat</a></h5>
-                            <small class="text-muted">1 Year 2 Month</small><br>
-                        </div>
-                        <div class="p-1">
-                            <p class="text-muted"><i class="fas fa-syringe"></i> : -</p>
-                            <p class="text-muted"><i class="fas fa-paw"></i> : Himalaya</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
     <div class="container-fluid sec4 mb-4">
@@ -185,6 +164,61 @@
                             id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     <button class="btn btn-pet w-100 py-3">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Profile -->
+<div class="modal fade" id="editProfile" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 pb-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body pb-4">
+                <form [formGroup]="formProfile">
+                    <div class="mb-3 text-center">
+                        <img src="https://via.placeholder.com/100" class="mb-2" alt="">
+                        <input style="display: none" formControlName="image" type="file" accept="image/*" (change)="onProfileChange($event)"
+                            #profileInput />
+                        <div class="flex-column">
+                            <p>{{showNewImage}}</p>
+                            <button type="button" class="upload-button btn" value="Upload attachment(s)"
+                                (click)="profileInput.click()">Change Image</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Name</label>
+                                <input formControlName="name" type="text" placeholder="e.g Miu"
+                                    class="py-3 border-0 form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Instagram</label>
+                                <input type="text" formControlName="ig" placeholder="e.g Miu"
+                                    class="py-3 border-0 form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Location</label>
+                        <select class="form-select py-3 border-0" formControlName="location">
+                            <option *ngFor="let item of cities" [value]="item.value">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input formControlName="email" type="email" placeholder="e.g Miu"
+                            class="py-3 border-0 form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <button class="btn btn-pet w-100 py-3" (click)="submitProfile()">Submit</button>
                 </form>
             </div>
         </div>

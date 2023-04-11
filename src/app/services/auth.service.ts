@@ -50,5 +50,11 @@ export class AuthService {
     return this.http.get<any>(this.url +"/tag")
   }
 
+  // Edit Profile
+  editProfile(id :any, data: any){
+    const token = localStorage.getItem('access_token')
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+    return this.http.put<any>(this.url + "/profile/" + id,data, {headers})
+  }
 
 }
