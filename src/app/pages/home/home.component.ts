@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import SwiperCore, { EffectCards, EffectCoverflow, EffectFade, Navigation, Pagination, SwiperOptions, Virtual, Swiper } from 'swiper';
 @Component({
@@ -12,7 +13,9 @@ export class HomeComponent implements OnInit{
   cat: any
   dog: any
   categories : any
-  constructor(private service: AuthService){}
+  mainAds: any
+  userid: any
+  constructor(private service: AuthService, public router: Router){}
 
   config: SwiperOptions = {
     grabCursor: true,
@@ -31,9 +34,10 @@ export class HomeComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    this.userid = localStorage.getItem("user_id")
     this.service.allpet()
     .subscribe(response => {
-      console.log(response);
+      // console.log(response);
       this.allpet = response
 
       this.cat = this.allpet.reduce((count: number, item: { data: { pet_type: string; }; }) => {
@@ -43,7 +47,7 @@ export class HomeComponent implements OnInit{
       this.dog = this.allpet.reduce((count: number, item: { data: { pet_type: string; }; }) => {
         return item.data.pet_type === 'dog' ? count + 1 : count
       }, 0) 
-      console.log(this.cat);  
+      // console.log(this.cat);  
       this.categories = [
         {
           name: "Cats",
@@ -58,7 +62,21 @@ export class HomeComponent implements OnInit{
           total: this.dog,
         },
       ]    
+    }, (error) =>{
+      console.log("No Pet");
     })
+    
+    this.service.ads()
+    .subscribe(response => {
+      this.mainAds = response.reverse()
+      // console.log(this.mainAds);
+    })
+
+    this.service.getSelf(this.userid)
+    .subscribe(response =>{
+      // console.log(response);
+      localStorage.setItem("userData", JSON.stringify(response[0].owner)) 
+   })
   }
 
   // categories = [
@@ -129,4 +147,11 @@ export class HomeComponent implements OnInit{
 
   ]
 
+  lost(){
+    this.router.navigate(['/pet-lost'])
+  }
+
+  singleAds(id : any){
+    this.router.navigate(['/ads-detail/'+ id])
+  }
 }

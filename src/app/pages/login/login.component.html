@@ -9,7 +9,7 @@
             <div class="card-body">
                 <form [formGroup]="loginForm">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <label for="exampleInputEmail1" class="form-label">Username</label>
                         <input formControlName="username" type="text" placeholder="Enter username" class="py-3 border-0 form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div class="mb-3">
@@ -21,6 +21,7 @@
                     </div>
                     <button class="btn btn-pet w-100 py-3" (click)="login()">Sign In</button>
                 </form>
+                <input type="checkbox" [(ngModel)]="rememberMe"> Remember me
                 <div class="text-center mt-3">
                     <small>by Continuing, you accept our <span>Terms and Conditions, Privacy Policy</span></small>
                 </div>

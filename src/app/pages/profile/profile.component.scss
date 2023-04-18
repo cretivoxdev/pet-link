@@ -27,13 +27,18 @@
         border-radius: 30px;
         border: 1.6px solid black;
         img{
-            width: 75px;
-            height: 75px;
+            width: 120px;
+            height: 120px;
             border-radius: 100%;
             border: 1.6px solid black;
             object-fit: cover;
         }
     }
+}
+
+.update-image{
+    margin-left: -10%;
+    border: 1px solid #22c993;
 }
 
 .sec3{

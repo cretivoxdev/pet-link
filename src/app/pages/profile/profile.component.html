@@ -32,8 +32,7 @@
                     <p class="text-muted"><small>{{owner.email}}</small></p>
                 </div>
                 <button class="btn btn-pet"
-                    (click)="editProfile(owner.id, owner.name, owner.email, owner.instagram, owner.location, owner.profile)"
-                    data-bs-toggle="modal" data-bs-target="#editProfile">Edit Profile</button>
+                    data-bs-toggle="modal" data-bs-target="#editProfile" (click)="updateData(owner.profile)">Edit Profile</button>
             </div>
         </div>
     </div>
@@ -180,11 +179,12 @@
             <div class="modal-body pb-4">
                 <form [formGroup]="formProfile">
                     <div class="mb-3 text-center">
-                        <img src="https://via.placeholder.com/100" class="mb-2" alt="">
-                        <input style="display: none" formControlName="image" type="file" accept="image/*" (change)="onProfileChange($event)"
+                        <img src="http://{{dataStorage.profile}}" class="mb-2" alt="">
+                        <!-- <img class="update-image" *ngIf="updatePP" src="{{showNewImage}}" alt=""> -->
+                        <input style="display: none" formControlName="image"  type="file" accept="image/*" (change)="onProfileChange($event)"
                             #profileInput />
                         <div class="flex-column">
-                            <p>{{showNewImage}}</p>
+                            <p>{{showNewImageName}}</p>
                             <button type="button" class="upload-button btn" value="Upload attachment(s)"
                                 (click)="profileInput.click()">Change Image</button>
                         </div>
@@ -192,8 +192,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Name</label>
-                                <input formControlName="name" type="text" placeholder="e.g Miu"
+                                <label for="exampleInputEmail1" class="form-label">Username <a class="btn p-0" type="button" data-toggle="tooltip" data-placement="top" title="Tooltip on top"><i class="fas fa-info-circle"></i></a></label>
+                                <input formControlName="username" type="text" placeholder="e.g Miu"
                                     class="py-3 border-0 form-control" id="exampleInputEmail1"
                                     aria-describedby="emailHelp">
                             </div>

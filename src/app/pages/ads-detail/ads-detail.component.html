@@ -1,0 +1,30 @@
+<section class="main px-0">
+    <div class="container-fluid py-2 sec1 mb-3">
+        <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <a class="btn" routerLink="/home">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+            </div>
+            <div class="ms-auto">
+                <a class="btn" type="button" (click)="share()">
+                    <i class="fas fa-share-alt"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid sec2">
+        <div class="wrap" *ngFor="let item of ads">
+            <div class="bg flex-column">              
+                <img class="cover" src="http://{{item.data.image}}" alt="">
+                <div class="my-4 title">
+                    <h1 class="mb-1">{{item.data.title}}</h1>
+                    <p class="text-muted">By: Admin | Published: {{item.data.date}}</p>
+                </div> 
+            </div>
+            <div class="desc-wrap">
+                <p>{{item.data.description}}</p>
+            </div>
+        </div>
+    </div>
+</section>

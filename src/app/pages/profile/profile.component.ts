@@ -25,10 +25,17 @@ export class ProfileComponent implements OnInit{
   changePicture: any
   formProfile : FormGroup
   showNewImage: any
+  showNewImageName: any
+  strore: any
+  lStorage: any
+  dataStorage: any
+  reupload: any
+  newName: any
+  updatePP = false
 
   constructor(public router: Router, private service: AuthService, public fb: FormBuilder, public http: HttpClient){
     this.formProfile = this.fb.group({
-      name: [''],
+      username: [''],
       email: [''],
       ig: [''],
       location: [''],
@@ -40,8 +47,10 @@ export class ProfileComponent implements OnInit{
     this.userId = localStorage.getItem("user_id")
     this.service.getSelf(this.userId)
     .subscribe(response => {
-      this.owner = response[0].owner
-      console.log(this.owner);
+      const a = localStorage.setItem("userData", JSON.stringify(response[0].owner))
+      this.strore = localStorage.getItem("userData")
+      let c = JSON.parse(this.strore)
+      this.owner = c
       this.pet = response[0].pets
       if(this.pet.length === 0){
         this.nopet = true
@@ -57,6 +66,16 @@ export class ProfileComponent implements OnInit{
       }, 2000)
     }))
 
+    this.lStorage = localStorage.getItem("userData")
+    this.dataStorage = JSON.parse(this.lStorage)
+    
+    this.formProfile.patchValue({
+      username: this.dataStorage.name,
+      email: this.dataStorage.email,
+      ig: this.dataStorage.instagram,
+      location: this.dataStorage.location,
+      image: this.dataStorage.profile
+    })
   }
 
   cities = [
@@ -81,40 +100,46 @@ export class ProfileComponent implements OnInit{
   // Edit Profile
   onProfileChange(event: any) {
     this.changePicture = event.target.files[0];
-    this.showNewImage = this.changePicture.name
+    this.showNewImageName = this.changePicture.name
+    // this.showNewImage = window.URL.createObjectURL(this.changePicture)
+    // console.log(this.showNewImage);
+    // this.updatePP = true
   }
 
-  editProfile(id:string, name: string, email: string, ig: string , location: string, profile: string){
-    // this.formProfile.patchValue({
-    //   name: name,
-    //   email: email,
-    //   ig: ig,
-    //   location: location,
-    // })
+  updateData(pict: any){
+    console.log(pict);
+    this.convertImage("http://" + pict)
+    .subscribe(response => {
+      const newName = 'new-file-name.jpg';
+      // Create a new File object with the modified name
+      this.reupload = new File([response], newName, { type: response.type });
+    })
   }
 
   submitProfile(){
-    // const formData = new FormData()
-    // formData.append("username", this.formProfile.get("name")!.value)
-    // formData.append("email", this.formProfile.get("email")!.value)
-    // formData.append("ig", this.formProfile.get("ig")!.value)
-    // formData.append("location", this.formProfile.get("location")!.value)
-    // if(this.changePicture === undefined){
-    //   this.convertImage("/assets/default.png")
-    //   .subscribe(response => {
-    //     formData.append("image", response)
-    //   })
-    // } else{
-    //   formData.append("image", this.changePicture)
-    // }
-    // this.service.editProfile(this.userId, formData)
-    // .subscribe(response => {
-    //   console.log(response);
-    //   location.reload()
-    // }, (error) => {
-    //   console.log("Form Profile Error");
-    // })
+    const formData = new FormData()
+    formData.append('username', this.formProfile.get('username')!.value)
+    formData.append('email', this.formProfile.get('email')!.value)
+    formData.append('ig', this.formProfile.get('ig')!.value)
+    formData.append('location', this.formProfile.get('location')!.value)
 
+    const exist = "http://" + (this.formProfile.get("image")!.value);
+    const newPict = this.changePicture
+
+    this.convertImage(exist)
+
+    if(newPict){
+      formData.append('image', newPict)
+      // console.log(newPict);
+    } else {
+      formData.append('image', this.reupload)
+    }
+    // console.log(formData.get('image'));
+    this.service.editProfile(this.userId, formData)
+    .subscribe(response => {
+      console.log(response);
+      location.reload()
+    })
   }
 
   // End Edit Profile
@@ -136,6 +161,8 @@ export class ProfileComponent implements OnInit{
 
   logout(){
     localStorage.removeItem('access_token'); // or clear the token from a cookie
+    localStorage.removeItem('user_id')
+    localStorage.removeItem('userData')
     this.router.navigate(['/login']);
   }
 

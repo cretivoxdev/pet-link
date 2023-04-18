@@ -10,6 +10,8 @@ import { ShopComponent } from './pages/shop/shop.component';
 import { ShopCheckoutComponent } from './pages/shop-checkout/shop-checkout.component';
 import { NotificationDetailComponent } from './pages/notification-detail/notification-detail.component';
 import { AuthGuard } from './guard/auth.guard';
+import { PetLostComponent } from './pages/pet-lost/pet-lost.component';
+import { AdsDetailComponent } from './pages/ads-detail/ads-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'login', pathMatch: 'full'},
@@ -20,7 +22,9 @@ const routes: Routes = [
   {path: 'notification', component: NotificationComponent},
   {path: 'notification-detail/:id', component: NotificationDetailComponent},
   {path: 'shop', component: ShopComponent},
-  {path: 'shop-checkout', component: ShopCheckoutComponent}
+  {path: 'shop-checkout', component: ShopCheckoutComponent},
+  {path: 'pet-lost', component: PetLostComponent},
+  {path: 'ads-detail/:id', component: AdsDetailComponent}
 ];
 
 @NgModule({

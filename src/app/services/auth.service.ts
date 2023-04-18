@@ -57,4 +57,11 @@ export class AuthService {
     return this.http.put<any>(this.url + "/profile/" + id,data, {headers})
   }
 
+  ads(){
+    return this.http.get<any>(this.url + "/sa/ads")
+  }
+  
+  adsDetail(id: any){
+    return this.http.get<any>(this.url + "/sa/ads/" + id)
+  }
 }
