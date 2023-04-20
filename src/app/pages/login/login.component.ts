@@ -22,6 +22,10 @@ export class LoginComponent implements  OnInit{
   getCryp: any
   final: any
   finalUsername: any
+  wrong = false
+
+  submit = true
+  loading = false
   constructor(private service: ApiServiceService, private router: Router, public fb: FormBuilder, private auth: AuthService){
     this.loginForm = this.fb.group({
       username: ["", Validators.required],
@@ -30,40 +34,34 @@ export class LoginComponent implements  OnInit{
   }
 
   ngOnInit(): void {
-    this.getCryp = localStorage.getItem("Store")
-    const ls = JSON.parse(this.getCryp)
-    this.final = CryptoJS.AES.decrypt(ls.belanjaterussampaimati, secretKey).toString(CryptoJS.enc.Utf8)
-    this.finalUsername = CryptoJS.AES.decrypt(ls.tapitapiituhanyakiasan, secretUname).toString(CryptoJS.enc.Utf8)
-    if(ls){
-      this.loginForm.patchValue({
-        username: this.finalUsername,
-        password: this.final,
-      })
-      this.rememberMe = true
-    }
-    // this.getCryp = localStorage.getItem('asdjklzcxmioqw')
-    // this.uname = localStorage.getItem("username")
-    // this.final = CryptoJS.AES.decrypt(this.getCryp, secretKey).toString(CryptoJS.enc.Utf8)
-    // this.rm = localStorage.getItem("rememberMe")
-    // if(this.rm === true){
-    //   this.rememberMe = true
-    // }
-    // if(this.getCryp && this.uname){
-    //   this.loginForm.patchValue({
-    //     username: this.uname,
-    //     password: this.final,
-    //   })
-    // }
     const token = localStorage.getItem('access_token')
     if(token === ""){
       this.router.navigate(['/login'])
     } else{
       this.router.navigate(['/home'])
     }
+
+    try{
+      this.getCryp = localStorage.getItem("Store")
+      const ls = JSON.parse(this.getCryp)
+      this.final = CryptoJS.AES.decrypt(ls.belanjaterussampaimati, secretKey).toString(CryptoJS.enc.Utf8)
+      this.finalUsername = CryptoJS.AES.decrypt(ls.tapitapiituhanyakiasan, secretUname).toString(CryptoJS.enc.Utf8)
+      if(ls){
+        this.loginForm.patchValue({
+          username: this.finalUsername,
+          password: this.final,
+        })
+        this.rememberMe = true
+      }
+    }catch{
+      console.log("not");
+    }
   }
 
 
   login(){
+    this.loading = true
+    this.submit = false
     this.username = this.loginForm.get("username")!.value
     this.password = this.loginForm.get("password")!.value
     this.encryptedUsername = CryptoJS.AES.encrypt(this.username, secretUname).toString()
@@ -83,13 +81,17 @@ export class LoginComponent implements  OnInit{
     .subscribe(response => {
       // console.log(response);
       if(response.msg === 'Welcome'){
+        this.loading = false
         localStorage.setItem('access_token', response.token)
         localStorage.setItem('user_id', response.id)
         this.router.navigate(['/home'])
       } else{
+        this.wrong = true
         return
       }
     }, error => {
+      this.loading =true
+      this.submit = false
       console.log(error);
     })
   }

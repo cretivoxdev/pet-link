@@ -138,7 +138,7 @@ export class ProfileComponent implements OnInit{
     this.service.editProfile(this.userId, formData)
     .subscribe(response => {
       console.log(response);
-      location.reload()
+      window.location.reload()
     })
   }
 

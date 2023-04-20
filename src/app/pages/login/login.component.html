@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="flex-column w-100 pt-4">
+    <div class="flex-column w-100 pt-4 pb-5">
         <div class="text-center mb-4">
             <h1 class="mb-2 main-color">Hello Again!</h1>
             <p>Welcome back you've been missed!</p>
@@ -7,30 +7,43 @@
         </div>
         <div class="card p-2">
             <div class="card-body">
+                <div class="alert alert-danger" role="alert" *ngIf="wrong">
+                    Please verify your username or password as they may be incorrect.
+                </div>
                 <form [formGroup]="loginForm">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Username</label>
-                        <input formControlName="username" type="text" placeholder="Enter username" class="py-3 border-0 form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input formControlName="username" type="text" placeholder="Enter username"
+                            class="py-3 border-0 form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="exampleInputEmail1" class="form-label">Password</label>
-                        <input formControlName="password" type="password" placeholder="Password" class="py-3 border-0 form-control" id="exampleInputPassword1">
+                        <input formControlName="password" type="password" placeholder="Password"
+                            class="py-3 border-0 form-control" id="exampleInputPassword1">
                     </div>
-                    <div class="mb-4 float-end">
-                        <small class="text-muted">Forgot Password?</small>
-                    </div>
-                    <button class="btn btn-pet w-100 py-3" (click)="login()">Sign In</button>
                 </form>
                 <input type="checkbox" [(ngModel)]="rememberMe"> Remember me
+                <div class="mb-3 float-end">
+                    <small class="text-muted">Forgot Password?</small>
+                </div>
+                <button class="btn btn-pet w-100 py-3 mb-3" (click)="login()" *ngIf="submit">Sign In</button>
+                <button class="btn btn-pet w-100 py-3 mb-3" type="button" disabled *ngIf="loading">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </button>
+                <button class="btn w-100">Register</button>
                 <div class="text-center mt-3">
-                    <small>by Continuing, you accept our <span>Terms and Conditions, Privacy Policy</span></small>
+                    <small class="text-muted">by Continuing, you accept our <span>Terms and Conditions, Privacy
+                            Policy</span>
+                    </small>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<footer class="fixed-bottom d-flex flex-wrap justify-content-center align-items-center border-top">
+
+<!-- <footer class="d-flex flex-wrap justify-content-center align-items-center border-top">
     <div class="wrap py-3">
         <small>Not a member? <span>Register now</span></small>
     </div>
-</footer>
+</footer> -->
