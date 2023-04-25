@@ -34,7 +34,7 @@
     <div class="container-fluid sec2 mb-3">
         <swiper [config]="ads" #swiper class="pb-2">
             <ng-template swiperSlide class="swiper-slide" *ngFor="let item of mainAds">
-                <img src="http://{{item.data.image}}" class="pet-shadow" alt="" (click)="singleAds(item.id)">
+                <img src="http://103.154.91.42:1234/ads/picture/{{item.id}}" class="pet-shadow" alt="" (click)="singleAds(item.id)">
             </ng-template>
         </swiper>
     </div>

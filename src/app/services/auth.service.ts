@@ -10,7 +10,8 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 export class AuthService {
   userData: any; // Save logged in user data
   authToken: any;
-  private url= "http://192.168.1.253:1234/api"
+  private url= "http://103.154.91.42:1234/api"
+  // private url= "http://192.168.1.253:1234/api"
 
   constructor(private http: HttpClient) { 
 

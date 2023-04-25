@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-notification',
@@ -7,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotificationComponent implements OnInit{
 
-  constructor(){}
+  notification: any
+
+  constructor(private services: AuthService){}
 
   ngOnInit(): void {
     console.log(this.notif)
+
+    this.services.ads()
+    .subscribe(response => {
+      console.log(response)
+      this.notification = response
+    })
   }
 
 
